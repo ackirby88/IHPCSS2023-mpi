@@ -119,12 +119,6 @@ int main(int argc, char **argv)
      */
     // TODO: get a new cartesian communicator (comm_cart)
 
-    int dim = 2;
-    int dims[] = {px,py};
-    int periods[] = {false, false};
-    int reorder = false;
-    MPI_Comm comm_cart;
-    MPI_Cart_create(MPI_COMM_WORLD,dim,dims,periods,reorder,&comm_cart);
 
     /* Step 2. create communication neighbors via MPI_Cart_Shift
      *  Summary:
@@ -152,10 +146,8 @@ int main(int argc, char **argv)
     // TODO: set west,east,south,north
 
     // Let consider dims[0] = X, so the shift tells us our left and right neighbours
-    MPI_Cart_shift(comm_cart, 0, 1, &west, &east);
 
     // Let consider dims[1] = Y, so the shift tells us our up and down neighbours
-    MPI_Cart_shift(comm_cart, 1, -1, &south, &north);
 
     /* Step 3. determine rank coordinates (rx,ry) in new communicator using MPI_Cart_coords
      *   Summary:
@@ -178,10 +170,6 @@ int main(int argc, char **argv)
      */
     // TODO: set rx,ry
 
-    int coords[2];
-    MPI_Cart_coords(comm_cart, rank, 2, coords);
-    rx = coords[0];
-    ry = coords[1];
     /* ======================================================================================= */
 
     /* decompose the domain */
