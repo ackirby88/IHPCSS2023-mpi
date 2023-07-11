@@ -106,7 +106,7 @@ int main(int argc, char* argv[])
     const int number_of_nodes = 6;
 
     // Declare the total number of neighbours until each MPI process (= the ones before + its own)
-    int indexes[number_of_nodes] = {2, 3, 4, 5, 5, 6};
+    int indexes[6] = {2, 3, 4, 5, 5, 6};
 
     // Declare the endpoint of each edge
     int edges[6] = {1, 2, 3, 1, 1, 5};

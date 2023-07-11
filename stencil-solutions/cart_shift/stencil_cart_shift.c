@@ -155,7 +155,7 @@ int main(int argc, char **argv)
     MPI_Cart_shift(comm_cart, 0, 1, &west, &east);
 
     // Let consider dims[1] = Y, so the shift tells us our up and down neighbours
-    MPI_Cart_shift(comm_cart, 1, -1, &south, &north);
+    MPI_Cart_shift(comm_cart, 1, 1, &north, &south);
 
     /* Step 3. determine rank coordinates (rx,ry) in new communicator using MPI_Cart_coords
      *   Summary:
